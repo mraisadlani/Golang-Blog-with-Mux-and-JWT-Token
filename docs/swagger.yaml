@@ -1,0 +1,2749 @@
+basePath: /api
+definitions:
+  request.ArticleRequest:
+    properties:
+      create_at:
+        type: string
+      icon:
+        type: string
+      id_article:
+        type: integer
+      nama_article:
+        type: string
+      slug:
+        type: string
+      update_at:
+        type: string
+    type: object
+  request.CategoryRequest:
+    properties:
+      create_at:
+        type: string
+      id_category:
+        type: integer
+      nama_category:
+        type: string
+      slug:
+        type: string
+      update_at:
+        type: string
+    type: object
+  request.ForgetPasswordRequest:
+    properties:
+      new_password:
+        type: string
+      old_password:
+        type: string
+    type: object
+  request.LoginRequest:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  request.MenuRequest:
+    properties:
+      create_at:
+        type: string
+      icon:
+        type: string
+      id_menu:
+        type: integer
+      nama_menu:
+        type: string
+      path:
+        type: string
+      slug:
+        type: string
+      status:
+        type: boolean
+      update_at:
+        type: string
+    type: object
+  request.PermissionRequest:
+    properties:
+      create_at:
+        type: string
+      f_create:
+        type: integer
+      f_delete:
+        type: integer
+      f_publish:
+        type: integer
+      f_read:
+        type: integer
+      f_update:
+        type: integer
+      id_menu:
+        type: integer
+      id_permission:
+        type: integer
+      id_user:
+        type: integer
+    type: object
+  request.RoleRequest:
+    properties:
+      create_at:
+        type: string
+      id_role:
+        type: integer
+      nama_role:
+        type: string
+      status:
+        type: boolean
+      update_at:
+        type: string
+    type: object
+  request.SubMenuRequest:
+    properties:
+      create_at:
+        type: string
+      icon:
+        type: string
+      id_menu:
+        type: integer
+      id_sub_menu:
+        type: integer
+      nama_sub_menu:
+        type: string
+      path:
+        type: string
+      slug:
+        type: string
+      status:
+        type: boolean
+      update_at:
+        type: string
+    type: object
+  request.TagRequest:
+    properties:
+      create_at:
+        type: string
+      id_tag:
+        type: integer
+      nama_tag:
+        type: string
+      slug:
+        type: string
+      update_at:
+        type: string
+    type: object
+  request.UserRequest:
+    properties:
+      create_at:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      id_role:
+        type: integer
+      id_user:
+        type: integer
+      last_name:
+        type: string
+      no_telp:
+        type: string
+      password:
+        type: string
+      photo:
+        type: string
+      status:
+        type: boolean
+      update_at:
+        type: string
+      username:
+        type: string
+    type: object
+  response.Response:
+    properties:
+      data:
+        type: object
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+host: localhost:9876
+info:
+  contact:
+    email: mraisadlani@gmail.com
+    name: Muhammad Rais Adlani
+    url: https://gitlab.com/mraisadlani
+  description: Service Blog
+  license:
+    name: MIT
+    url: https://gitlab.com/mraisadlani/golang-blog-with-mux-and-jwt-token/-/blob/main/LICENSE
+  termsOfService: http://swagger.io/terms/
+  title: Go Blog
+  version: "1.0"
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: Gate REST API
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Connected to REST API BBO
+      tags:
+      - Welcome Controller
+  /ArticleAPI/:
+    get:
+      consumes:
+      - application/json
+      description: REST API Article
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Sort
+        in: query
+        name: sort
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Get All Article
+      tags:
+      - Article Controller
+  /ArticleAPI/{id_article}/DeleteArticle:
+    post:
+      consumes:
+      - application/json
+      description: REST API Article
+      parameters:
+      - description: Id Article
+        in: path
+        name: id_article
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Delete Article
+      tags:
+      - Article Controller
+  /ArticleAPI/{id_article}/GetArticle:
+    get:
+      consumes:
+      - application/json
+      description: REST API Article
+      parameters:
+      - description: Id Article
+        in: path
+        name: id_article
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Find by Article
+      tags:
+      - Article Controller
+  /ArticleAPI/{id_article}/UpdateArticle:
+    post:
+      consumes:
+      - application/json
+      description: REST API Article
+      parameters:
+      - description: Id Article
+        in: path
+        name: id_article
+        required: true
+        type: string
+      - description: Form
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          $ref: '#/definitions/request.ArticleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Update Article
+      tags:
+      - Article Controller
+  /ArticleAPI/CreateArticle:
+    post:
+      consumes:
+      - application/json
+      description: REST API Article
+      parameters:
+      - description: Form
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          $ref: '#/definitions/request.ArticleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Create Article
+      tags:
+      - Article Controller
+  /AuthAPI/{id_user}/ForgetPassword:
+    post:
+      consumes:
+      - application/json
+      description: REST API Auth
+      parameters:
+      - description: Id User
+        in: path
+        name: id_user
+        required: true
+        type: string
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/request.ForgetPasswordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Forget Password
+      tags:
+      - Auth Controller
+  /AuthAPI/DoLogin:
+    post:
+      consumes:
+      - application/json
+      description: REST API Auth
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/request.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Do Login
+      tags:
+      - Auth Controller
+  /CategoryAPI/:
+    get:
+      consumes:
+      - application/json
+      description: REST API Category
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Sort
+        in: query
+        name: sort
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Get All Category
+      tags:
+      - Category Controller
+  /CategoryAPI/{id_category}/DeleteCategory:
+    post:
+      consumes:
+      - application/json
+      description: REST API Category
+      parameters:
+      - description: Id Category
+        in: path
+        name: id_category
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Delete Category
+      tags:
+      - Category Controller
+  /CategoryAPI/{id_category}/GetCategory:
+    get:
+      consumes:
+      - application/json
+      description: REST API Category
+      parameters:
+      - description: Id Category
+        in: path
+        name: id_category
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Find by Category
+      tags:
+      - Category Controller
+  /CategoryAPI/{id_category}/UpdateCategory:
+    post:
+      consumes:
+      - application/json
+      description: REST API Category
+      parameters:
+      - description: Id Category
+        in: path
+        name: id_category
+        required: true
+        type: string
+      - description: Form
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          $ref: '#/definitions/request.CategoryRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Update Category
+      tags:
+      - Category Controller
+  /CategoryAPI/CreateCategory:
+    post:
+      consumes:
+      - application/json
+      description: REST API Category
+      parameters:
+      - description: Form
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          $ref: '#/definitions/request.CategoryRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Create Category
+      tags:
+      - Category Controller
+  /MenuAPI/:
+    get:
+      consumes:
+      - application/json
+      description: REST API Menu
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Sort
+        in: query
+        name: sort
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Get All Menu
+      tags:
+      - Menu Controller
+  /MenuAPI/{id_menu}/DeleteMenu:
+    post:
+      consumes:
+      - application/json
+      description: REST API Menu
+      parameters:
+      - description: Id Menu
+        in: path
+        name: id_menu
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Delete Menu
+      tags:
+      - Menu Controller
+  /MenuAPI/{id_menu}/GetMenu:
+    get:
+      consumes:
+      - application/json
+      description: REST API Menu
+      parameters:
+      - description: Id Menu
+        in: path
+        name: id_menu
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Find by Menu
+      tags:
+      - Menu Controller
+  /MenuAPI/{id_menu}/StatusMenu:
+    post:
+      consumes:
+      - application/json
+      description: REST API Menu
+      parameters:
+      - description: Id Menu
+        in: path
+        name: id_menu
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Status Menu
+      tags:
+      - Menu Controller
+  /MenuAPI/{id_menu}/UpdateMenu:
+    post:
+      consumes:
+      - application/json
+      description: REST API Menu
+      parameters:
+      - description: Id Menu
+        in: path
+        name: id_menu
+        required: true
+        type: string
+      - description: Form
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          $ref: '#/definitions/request.MenuRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Update Menu
+      tags:
+      - Menu Controller
+  /MenuAPI/CreateMenu:
+    post:
+      consumes:
+      - application/json
+      description: REST API Menu
+      parameters:
+      - description: Form
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          $ref: '#/definitions/request.MenuRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Create Menu
+      tags:
+      - Menu Controller
+  /PermissionAPI/{id_permission}/DeletePermission:
+    post:
+      consumes:
+      - application/json
+      description: REST API Permission
+      parameters:
+      - description: Id Permission
+        in: path
+        name: id_permission
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Delete Permission
+      tags:
+      - Permission Controller
+  /PermissionAPI/{id_user}/GetPermission/{id_menu}:
+    get:
+      consumes:
+      - application/json
+      description: REST API Permission
+      parameters:
+      - description: Id User
+        in: path
+        name: id_user
+        required: true
+        type: string
+      - description: Id Menu
+        in: path
+        name: id_menu
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Find Permission
+      tags:
+      - Permission Controller
+  /PermissionAPI/CreatePermission:
+    post:
+      consumes:
+      - application/json
+      description: REST API Permission
+      parameters:
+      - description: Form
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/request.PermissionRequest'
+          type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Create Permission
+      tags:
+      - Permission Controller
+  /PermissionAPI/UpdatePermission:
+    post:
+      consumes:
+      - application/json
+      description: REST API Permission
+      parameters:
+      - description: Form
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/request.PermissionRequest'
+          type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Update Permission
+      tags:
+      - Permission Controller
+  /PostAPI/{id_article}/CancelPost/{id_post}:
+    post:
+      consumes:
+      - application/json
+      description: REST API Post
+      parameters:
+      - description: Id Article
+        in: path
+        name: id_article
+        required: true
+        type: string
+      - description: Id Post
+        in: path
+        name: id_post
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Cancel Post
+      tags:
+      - Post Controller
+  /PostAPI/{id_article}/DeletePost/{id_post}:
+    post:
+      consumes:
+      - application/json
+      description: REST API Post
+      parameters:
+      - description: Id Article
+        in: path
+        name: id_article
+        required: true
+        type: string
+      - description: Id Post
+        in: path
+        name: id_post
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Delete Post
+      tags:
+      - Post Controller
+  /PostAPI/{id_article}/FindPost/{id_post}:
+    get:
+      consumes:
+      - application/json
+      description: REST API Post
+      parameters:
+      - description: Id Article
+        in: path
+        name: id_article
+        required: true
+        type: string
+      - description: Id Post
+        in: path
+        name: id_post
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Find Post
+      tags:
+      - Post Controller
+  /PostAPI/{id_article}/PublishPost/{id_post}:
+    post:
+      consumes:
+      - application/json
+      description: REST API Post
+      parameters:
+      - description: Id Article
+        in: path
+        name: id_article
+        required: true
+        type: string
+      - description: Id Post
+        in: path
+        name: id_post
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Publish Post
+      tags:
+      - Post Controller
+  /PostAPI/CreatePost:
+    post:
+      consumes:
+      - application/json
+      description: REST API Post
+      parameters:
+      - in: formData
+        name: create_at
+        type: string
+      - in: formData
+        name: create_by
+        type: string
+      - in: formData
+        name: description
+        type: string
+      - in: formData
+        name: id_article
+        type: integer
+      - in: formData
+        name: id_post
+        type: integer
+      - in: formData
+        name: nama_post
+        type: string
+      - in: formData
+        name: published
+        type: boolean
+      - in: formData
+        name: slug
+        type: string
+      - in: formData
+        name: update_at
+        type: string
+      - in: formData
+        name: update_by
+        type: string
+      - description: Photo
+        in: formData
+        name: photo
+        required: true
+        type: file
+      - description: Category
+        in: formData
+        name: categories
+        required: true
+        type: string
+      - description: Tag
+        in: formData
+        name: tags
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Create Post
+      tags:
+      - Post Controller
+  /PostAPI/GetAllPost:
+    get:
+      consumes:
+      - application/json
+      description: REST API Post
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Sort
+        in: query
+        name: sort
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Get All Post
+      tags:
+      - Post Controller
+  /PostAPI/UpdatePost:
+    post:
+      consumes:
+      - application/json
+      description: REST API Post
+      parameters:
+      - in: formData
+        name: create_at
+        type: string
+      - in: formData
+        name: create_by
+        type: string
+      - in: formData
+        name: description
+        type: string
+      - in: formData
+        name: id_article
+        type: integer
+      - in: formData
+        name: id_post
+        type: integer
+      - in: formData
+        name: nama_post
+        type: string
+      - in: formData
+        name: published
+        type: boolean
+      - in: formData
+        name: slug
+        type: string
+      - in: formData
+        name: update_at
+        type: string
+      - in: formData
+        name: update_by
+        type: string
+      - description: Photo
+        in: formData
+        name: photo
+        type: file
+      - description: Category
+        in: formData
+        name: categories
+        required: true
+        type: string
+      - description: Tag
+        in: formData
+        name: tags
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Update Post
+      tags:
+      - Post Controller
+  /RoleAPI/{id_role}/DeleteRole:
+    post:
+      consumes:
+      - application/json
+      description: REST API Role
+      parameters:
+      - description: Id Role
+        in: path
+        name: id_role
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Delete Role
+      tags:
+      - Role Controller
+  /RoleAPI/{id_role}/StatusRole:
+    post:
+      consumes:
+      - application/json
+      description: REST API Role
+      parameters:
+      - description: Id Role
+        in: path
+        name: id_role
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Status Role
+      tags:
+      - Role Controller
+  /RoleAPI/{id_role}/UpdateRole:
+    post:
+      consumes:
+      - application/json
+      description: REST API Role
+      parameters:
+      - description: Id Role
+        in: path
+        name: id_role
+        required: true
+        type: string
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/request.RoleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Update Role
+      tags:
+      - Role Controller
+  /RoleAPI/{role_name}/FindByRoleName:
+    post:
+      consumes:
+      - application/json
+      description: REST API Role
+      parameters:
+      - description: Role name
+        in: path
+        name: role_name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Find Role
+      tags:
+      - Role Controller
+  /RoleAPI/CreateRole:
+    post:
+      consumes:
+      - application/json
+      description: REST API Role
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/request.RoleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Create Role
+      tags:
+      - Role Controller
+  /RoleAPI/GetAllRoles:
+    get:
+      consumes:
+      - application/json
+      description: REST API Role
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Sort
+        in: query
+        name: sort
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Get All Role
+      tags:
+      - Role Controller
+  /SubMenuAPI/:
+    get:
+      consumes:
+      - application/json
+      description: REST API Sub Menu
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Sort
+        in: query
+        name: sort
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Get All Sub Menu
+      tags:
+      - Sub Menu Controller
+  /SubMenuAPI/{id_menu}/CreateSubMenu:
+    post:
+      consumes:
+      - application/json
+      description: REST API Sub Menu
+      parameters:
+      - description: Id Menu
+        in: path
+        name: id_menu
+        required: true
+        type: string
+      - description: Form
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/request.SubMenuRequest'
+          type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Create Sub Menu
+      tags:
+      - Sub Menu Controller
+  /SubMenuAPI/{id_menu}/DeleteSubMenu/{id_sub_menu}:
+    post:
+      consumes:
+      - application/json
+      description: REST API Sub Menu
+      parameters:
+      - description: Id Menu
+        in: path
+        name: id_menu
+        required: true
+        type: string
+      - description: Id Sub Menu
+        in: path
+        name: id_sub_menu
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Delete Sub Menu
+      tags:
+      - Sub Menu Controller
+  /SubMenuAPI/{id_menu}/StatusSubMenu/{id_sub_menu}:
+    post:
+      consumes:
+      - application/json
+      description: REST API Sub Menu
+      parameters:
+      - description: Id Menu
+        in: path
+        name: id_menu
+        required: true
+        type: string
+      - description: Id Sub Menu
+        in: path
+        name: id_sub_menu
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Status Sub Menu
+      tags:
+      - Sub Menu Controller
+  /SubMenuAPI/{id_menu}/UpdateSubMenu/{id_sub_menu}:
+    post:
+      consumes:
+      - application/json
+      description: REST API Sub Menu
+      parameters:
+      - description: Id Menu
+        in: path
+        name: id_menu
+        required: true
+        type: string
+      - description: Id Sub Menu
+        in: path
+        name: id_sub_menu
+        required: true
+        type: string
+      - description: Form
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          $ref: '#/definitions/request.SubMenuRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Update Sub Menu
+      tags:
+      - Sub Menu Controller
+  /SubMenuAPI/{nama_menu}/GetSubMenu/{nama_sub_menu}:
+    get:
+      consumes:
+      - application/json
+      description: REST API Sub Menu
+      parameters:
+      - description: Nama Menu
+        in: path
+        name: nama_menu
+        required: true
+        type: string
+      - description: Nama Sub Menu
+        in: path
+        name: nama_sub_menu
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Find by Sub Menu
+      tags:
+      - Sub Menu Controller
+  /TagAPI/:
+    get:
+      consumes:
+      - application/json
+      description: REST API Tag
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Sort
+        in: query
+        name: sort
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Get All Tag
+      tags:
+      - Tag Controller
+  /TagAPI/{id_tag}/DeleteTag:
+    post:
+      consumes:
+      - application/json
+      description: REST API Tag
+      parameters:
+      - description: Id Tag
+        in: path
+        name: id_tag
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Delete Tag
+      tags:
+      - Tag Controller
+  /TagAPI/{id_tag}/GetTag:
+    get:
+      consumes:
+      - application/json
+      description: REST API Tag
+      parameters:
+      - description: Id Tag
+        in: path
+        name: id_tag
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Find by Tag
+      tags:
+      - Tag Controller
+  /TagAPI/{id_tag}/UpdateTag:
+    post:
+      consumes:
+      - application/json
+      description: REST API Tag
+      parameters:
+      - description: Id Tag
+        in: path
+        name: id_tag
+        required: true
+        type: string
+      - description: Form
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          $ref: '#/definitions/request.TagRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Update Tag
+      tags:
+      - Tag Controller
+  /TagAPI/CreateTag:
+    post:
+      consumes:
+      - application/json
+      description: REST API Tag
+      parameters:
+      - description: Form
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          $ref: '#/definitions/request.TagRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Create Tag
+      tags:
+      - Tag Controller
+  /UserAPI/{id_user}/DeleteUser:
+    post:
+      consumes:
+      - application/json
+      description: REST API User
+      parameters:
+      - description: Id User
+        in: path
+        name: id_user
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Delete User
+      tags:
+      - User Controller
+  /UserAPI/{id_user}/FindById:
+    post:
+      consumes:
+      - application/json
+      description: REST API User
+      parameters:
+      - description: Id User
+        in: path
+        name: id_user
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Find User
+      tags:
+      - User Controller
+  /UserAPI/{id_user}/StatusUser:
+    post:
+      consumes:
+      - application/json
+      description: REST API User
+      parameters:
+      - description: Id User
+        in: path
+        name: id_user
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Status User
+      tags:
+      - User Controller
+  /UserAPI/{id_user}/UpdateUser:
+    post:
+      consumes:
+      - application/json
+      description: REST API User
+      parameters:
+      - description: Id User
+        in: path
+        name: id_user
+        required: true
+        type: string
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/request.UserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Update User
+      tags:
+      - User Controller
+  /UserAPI/{id_user}/UploadImage:
+    post:
+      consumes:
+      - application/json
+      description: REST API User
+      parameters:
+      - description: Id User
+        in: path
+        name: id_user
+        required: true
+        type: string
+      - description: Photo
+        in: formData
+        name: photo
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Upload Image User
+      tags:
+      - User Controller
+  /UserAPI/CreateUser:
+    post:
+      consumes:
+      - application/json
+      description: REST API User
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/request.UserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Create User
+      tags:
+      - User Controller
+  /UserAPI/GetAllUsers:
+    get:
+      consumes:
+      - application/json
+      description: REST API User
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Sort
+        in: query
+        name: sort
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "403":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - BearerAuth: []
+      summary: Get All User
+      tags:
+      - User Controller
+securityDefinitions:
+  BearerAuth:
+    in: Header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
